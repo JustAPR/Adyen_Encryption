@@ -1,0 +1,33 @@
+def kong():
+    print("Enter the URL:")
+    url = input()
+
+    print("Enter HTTP headers (Press Enter on an empty line to stop):")
+    lines = []
+    while True:
+        line = input()
+        if line:
+            lines.append(line)
+        else:
+            break
+
+# Extract header names and convert to lowercase
+    headers = [line.split(': ')[0].lower() for line in lines]
+
+# Convert header names to a string list format
+    header_order = '["' + '","'.join(headers) + '"]'
+
+# Print the formatted output
+    print(f"x-tls-url: {url}")
+    print("x-tls-proxy: <Proxys>")
+    print("x-tls-profile: chrome_120")
+    print("x-tls-timeout: 30")
+    print("x-tls-json: false")
+    print("x-tls-redirect: false")
+    print(f"x-tls-header-order: {header_order}")
+    for line in lines:
+        print(line.lower())
+    print()
+    print()
+    
+kong()
